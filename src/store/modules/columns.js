@@ -3,7 +3,33 @@ import http from "@/plugins/http"
 export default {
   namespaced: true,
   state: {
-      columns: []
+      columns: [
+        {
+          id: 1,
+          name: "backlog",
+          order: 1
+        },
+        {
+          id: 2,
+          name: "in sprint",
+          order: 2
+        },
+        {
+          id: 3,
+          name: "in test",
+          order: 4
+        },
+        {
+          id: 4,
+          name: "in progress",
+          order: 3
+        },
+        {
+          id: 5,
+          name: "done",
+          order: 5
+        }
+      ]
   },
   mutations: {
     ADD_COLUMN(state, column) {
@@ -14,9 +40,18 @@ export default {
     },
     DELETE_COLUMN(state, columnId) {
       state.columns = state.columns.filter(_column => _column.id != columnId)
+    },
+    SET_COLUMNS(state, columns) {
+      state.columns = columns
     }
   },
   actions: {
+    fetchColumns({ commit }) {
+      return http.get("/column").then(res => {
+        commit("SET_COLUMNS", res.data)
+        return res
+      })
+    },
     addColumn({ commit }, payload) {
       return http.post("/column", payload).then(res => {
         commit("ADD_COLUMN", payload)
@@ -37,9 +72,12 @@ export default {
     }
   },
   getters: {
-    // getSucess: state => {
-    //   if (!state.success) return false;
-    //   return state.success;
-    // }
+    getColumns(state) {
+      // console.log('store.getColumns: ',state.columns)
+      return state.columns
+    },
+    getColumn(state, columnId) {
+      return state.columns.find(_column => _column.id === columnId)
+    }
   }
 };
