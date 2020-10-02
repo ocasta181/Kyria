@@ -1,6 +1,6 @@
 <template>
   <div id="Tasks">
-    <Column v-for="column in getColumns" :key="column.id" :name="column.name" />
+    <Column v-for="column in getColumns" :key="column.id" :name="column.name" :order="column.order" />
   </div>
 </template>
 

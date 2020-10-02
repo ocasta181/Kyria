@@ -16,13 +16,13 @@ export default {
         },
         {
           id: 3,
-          name: "in test",
-          order: 4
+          name: "in progress",
+          order: 3
         },
         {
           id: 4,
-          name: "in progress",
-          order: 3
+          name: "in review",
+          order: 4
         },
         {
           id: 5,

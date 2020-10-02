@@ -6,17 +6,23 @@
 </template>
 
 <script>
-// import { mapGetters } from "vuex"
+  import { mapActions } from "vuex"
+  import Task from "@/components/Task.vue"
 
-import Task from './components/Task.vue'
-
-export default {
-  name: 'column',
-  props: ['name'],
-  components: {
-    Task,
-  },
-}
+  //v-if="this.order == task.status"
+  export default {
+    name: 'task',
+    props: ['name', 'order'],
+    components: {
+        Task,
+      },
+      methods: {
+        ...mapActions("tasks", ["fetchTasks", "addTask", "updateTask", "deleteTask"])
+      },
+      computed: {
+        tasks: function() { return this.$store.getters.getTasksInStatus(this.order)}
+      }
+  }
 </script>
 
 <style scoped>
