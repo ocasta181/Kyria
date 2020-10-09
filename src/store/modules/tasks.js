@@ -52,15 +52,19 @@ export default {
     }
   },
   getters: {
-    getTasks(state) {
+    getTasks: state => {
       // console.log('store.getTasks: ',state.tasks)
       return state.tasks
     },
-    getTask(state, taskId) {
-      return state.tasks.find(_task => _task.id === taskId)
+    getTaskById: state => {
+      return taskId => {
+        return state.tasks.find(_task => _task.id === taskId)
+      }
     },
-    getTasksInStatus(state, status) {
-      return state.tasks.find(_task => _task.status === status)
+    getTasksInStatus: state => {
+      return status => {
+        return state.tasks.filter(_task => _task.status == status)
+      }
     }
   }
 };

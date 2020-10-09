@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import { mapActions } from "vuex"
+  import { mapActions, mapGetters } from "vuex"
   import Task from "@/components/Task.vue"
 
   //v-if="this.order == task.status"
@@ -20,7 +20,11 @@
         ...mapActions("tasks", ["fetchTasks", "addTask", "updateTask", "deleteTask"])
       },
       computed: {
-        tasks: function() { return this.$store.getters.getTasksInStatus(this.order)}
+        ...mapGetters("tasks", ["getTasksInStatus", "getTasks"]),
+
+        tasks() {
+          return this.getTasksInStatus(this.order);
+        }
       }
   }
 </script>
