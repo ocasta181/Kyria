@@ -7,7 +7,44 @@ export default {
         {
           id: 1,
           name: "add tasks to VueX store",
-          status: 3
+          status: 5,
+          isComplete: true
+        },
+        {
+          id: 2,
+          name: "move tasks to server",
+          status: 1,
+          isComplete: false
+        },
+        {
+          id: 3,
+          name: "move tasks to database",
+          status: 1,
+          isComplete: false
+        },
+        {
+          id: 4,
+          name: "add task creation",
+          status: 1,
+          isComplete: false
+        },
+        {
+          id: 5,
+          name: "add task completion",
+          status: 5,
+          isComplete: true
+        },
+        {
+          id: 6,
+          name: "add task movement",
+          status: 1,
+          isComplete: false
+        },
+        {
+          id: 7,
+          name: "complete should move to done column",
+          status: 1,
+          isComplete: false
         }
       ]
   },

@@ -23,9 +23,11 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   #Tasks {
+    margin: 0 50px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    background-color: blue;
   }
 </style>
