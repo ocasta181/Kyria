@@ -1,7 +1,7 @@
 <template>
   <div class="task" v-bind:class="{'taskIsComplete': isComplete}">
     <input type="checkbox" v-model="isComplete" onclick="setStaus()"/> 
-    <input type="text" v-model="name" />
+    <input type="text" v-model="title" />
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 
 export default {
   name: 'task',
-  props: ['name', 'isComplete'],
+  props: ['title', 'isComplete'],
   methods: {
     // setStatus: (element) => {
     //   element.

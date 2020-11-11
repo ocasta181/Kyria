@@ -4,7 +4,7 @@
       <span class="column-title">{{this.name}}</span>
       <button class="task-add">+</button>
     </div>
-    <Task v-for="task in tasks" :key="task.id" :name="task.name" :isComplete="task.isComplete" :status="task.status"/>
+    <Task v-for="task in tasks" :key="task.id" :title="task.title" :isComplete="task.isComplete" :status="task.status"/>
   </div>
 </template>
 
@@ -32,6 +32,14 @@
 
       tasks() {
         return this.getTasksInStatus(this.order);
+      }
+    },
+    created() {
+      if (!this.tasks || !this.tasks.length) {
+        this.$loader.start();
+        this.fetchTasks().finally(() => {
+          this.$loader.stop();
+        });
       }
     }
   }
